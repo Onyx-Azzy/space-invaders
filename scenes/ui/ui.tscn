@@ -1,0 +1,237 @@
+[gd_scene load_steps=15 format=3 uid="uid://oexrqlchrxrc"]
+
+[ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="1_jcn1r"]
+[ext_resource type="Script" uid="uid://bnpt58qrs3sqr" path="res://scenes/ui/ui.gd" id="2_y220t"]
+[ext_resource type="Shader" uid="uid://cxqnwbisq0l7h" path="res://resources/rainbow_gradient.gdshader" id="3_0dwhk"]
+[ext_resource type="StyleBox" uid="uid://c586gdm45t285" path="res://resources/panel.tres" id="3_7vp6q"]
+[ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_pfayw"]
+[ext_resource type="Material" uid="uid://cj8hwho1qqhcn" path="res://resources/button_shader.tres" id="5_pfayw"]
+[ext_resource type="Texture2D" uid="uid://cm1k4u0h67i77" path="res://sprites/Player.png" id="7_7vp6q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_vk6ag"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpkbw"]
+font_size = 60
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7vp6q"]
+shader = ExtResource("3_0dwhk")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jcn1r"]
+shader = ExtResource("3_0dwhk")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uegxj"]
+shader = ExtResource("3_0dwhk")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y220t"]
+shader = ExtResource("3_0dwhk")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5kmx"]
+font_size = 60
+
+[node name="UI" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jcn1r")
+script = ExtResource("2_y220t")
+
+[node name="ScoreLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -192.0
+offset_right = -16.0
+offset_bottom = 64.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_vk6ag")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="GameOverLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 48.0
+offset_right = 128.0
+offset_bottom = 131.0
+grow_horizontal = 2
+theme_override_styles/normal = ExtResource("3_7vp6q")
+text = "Game over"
+label_settings = SubResource("LabelSettings_vpkbw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HighscoreLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 136.0
+offset_right = 128.0
+offset_bottom = 219.0
+grow_horizontal = 2
+theme_override_styles/normal = ExtResource("3_7vp6q")
+text = "Highscore: 0"
+label_settings = SubResource("LabelSettings_vpkbw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameMenu" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -104.0
+offset_top = -324.0
+offset_right = 102.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("3_7vp6q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameMenu"]
+process_mode = 3
+self_modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ContinueButton" type="Button" parent="GameMenu/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_7vp6q")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Continue"
+script = ExtResource("4_pfayw")
+
+[node name="RestartButton" type="Button" parent="GameMenu/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jcn1r")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Restart"
+script = ExtResource("4_pfayw")
+
+[node name="SettingsButton" type="Button" parent="GameMenu/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_uegxj")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Settings"
+script = ExtResource("4_pfayw")
+
+[node name="MenuButton" type="Button" parent="GameMenu/VBoxContainer"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_y220t")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "QUIT"
+script = ExtResource("4_pfayw")
+
+[node name="SettingsMenu" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -86.0
+offset_right = 96.0
+offset_bottom = 114.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_7vp6q")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="SoundsHBox" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SoundsLabel" type="Label" parent="SettingsMenu/VBoxContainer/SoundsHBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.3
+text = "Sounds:"
+
+[node name="SoundsHSlider" type="HSlider" parent="SettingsMenu/VBoxContainer/SoundsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+max_value = 1.0
+step = 0.01
+
+[node name="HideSettingsButton" type="Button" parent="SettingsMenu/VBoxContainer"]
+unique_name_in_owner = true
+material = ExtResource("5_pfayw")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+script = ExtResource("4_pfayw")
+
+[node name="LivesRemainingTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 51.692307
+texture = ExtResource("7_7vp6q")
+expand_mode = 5
+
+[node name="LivesRemainingLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 64.0
+offset_right = 128.0
+offset_bottom = 64.0
+text = "3"
+label_settings = SubResource("LabelSettings_g5kmx")
+vertical_alignment = 2

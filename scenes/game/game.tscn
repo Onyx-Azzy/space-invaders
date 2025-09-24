@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://ys8sfa4cjddk"]
+
+[ext_resource type="Script" uid="uid://dwyxpnyff5rl6" path="res://scenes/game/game.gd" id="1_ftsea"]
+[ext_resource type="PackedScene" uid="uid://drbv2twpd0quj" path="res://scenes/player/player.tscn" id="2_otnwt"]
+[ext_resource type="PackedScene" uid="uid://oexrqlchrxrc" path="res://scenes/ui/ui.tscn" id="3_kelw5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(64, 584)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_ftsea")
+
+[node name="Player" parent="." instance=ExtResource("2_otnwt")]
+unique_name_in_owner = true
+position = Vector2(480, 488)
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Wall" type="Area2D" parent="Arena" groups=["environment"]]
+position = Vector2(-32, 280)
+collision_mask = 6
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall"]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Wall2" type="Area2D" parent="Arena" groups=["environment"]]
+position = Vector2(992, 288)
+collision_mask = 6
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2"]
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="UI Layer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UI Layer" instance=ExtResource("3_kelw5")]
+unique_name_in_owner = true

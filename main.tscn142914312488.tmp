@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://ys8sfa4cjddk"]
+
+[ext_resource type="PackedScene" uid="uid://drbv2twpd0quj" path="res://paddle.tscn" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://qudrryqv4jag" path="res://icon.svg" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bxwjebt62ge2l" path="res://ball.tscn" id="2_h2yge"]
+[ext_resource type="Script" uid="uid://cdiwgihgaaqt4" path="res://goal.gd" id="4_1bvp3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(960, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(64, 608)
+
+[node name="Main" type="Node2D"]
+
+[node name="Paddle_P1" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(48, 272)
+
+[node name="Paddle_P2" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(912, 272)
+player = 2
+
+[node name="Ball" parent="." instance=ExtResource("2_h2yge")]
+position = Vector2(480, 270)
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Arena" groups=["environment"]]
+visible = false
+position = Vector2(0, -32)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall"]
+position = Vector2(480, 16)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arena/Wall"]
+position = Vector2(480, 16)
+scale = Vector2(7.5, 0.25)
+texture = ExtResource("2_0xm2m")
+
+[node name="Wall2" type="StaticBody2D" parent="Arena" groups=["environment"]]
+visible = false
+position = Vector2(0, 540)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2"]
+position = Vector2(480, 16)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Sprite2D" type="Sprite2D" parent="Arena/Wall2"]
+position = Vector2(480, 16)
+scale = Vector2(7.5, 0.25)
+texture = ExtResource("2_0xm2m")
+
+[node name="Goal_P1" type="Area2D" parent="Arena"]
+position = Vector2(-50, 270)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_1bvp3")
+player_goal = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Goal_P1"]
+position = Vector2(18, 2)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Goal_P2" type="Area2D" parent="Arena"]
+position = Vector2(976, 264)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_1bvp3")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Goal_P2"]
+position = Vector2(18, 2)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_right = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score_P1" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+text = "0"
+
+[node name="Score_P2" type="Label" parent="Control"]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 40.0
+text = "0"

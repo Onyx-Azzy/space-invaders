@@ -1,0 +1,198 @@
+[gd_scene load_steps=12 format=3 uid="uid://f4pk17o5bme6"]
+
+[ext_resource type="Script" uid="uid://dcnxdap7ccm65" path="res://scenes/menu/menu.gd" id="2_t0a87"]
+[ext_resource type="Shader" uid="uid://cxqnwbisq0l7h" path="res://resources/rainbow_gradient.gdshader" id="3_e0arn"]
+[ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_037ec"]
+[ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="4_juveg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1o0p"]
+shader = ExtResource("3_e0arn")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8yej"]
+shader = ExtResource("3_e0arn")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2rt"]
+shader = ExtResource("3_e0arn")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0a87"]
+shader = ExtResource("3_e0arn")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo0fc"]
+shader = ExtResource("3_e0arn")
+shader_parameter/strength = 0.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_037ec"]
+shader = ExtResource("3_e0arn")
+shader_parameter/strength = 1.0
+shader_parameter/speed = 0.1
+shader_parameter/angle = 45.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_kaijy"]
+font_size = 170
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_juveg")
+script = ExtResource("2_t0a87")
+
+[node name="MainMenu" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 0, 1)
+custom_minimum_size = Vector2(300, 300)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -300.0
+offset_right = 150.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="PlayButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_y1o0p")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Play"
+script = ExtResource("4_037ec")
+
+[node name="SettingsButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_r8yej")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Settings"
+script = ExtResource("4_037ec")
+
+[node name="CreditsButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_3y2rt")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Credits"
+script = ExtResource("4_037ec")
+
+[node name="QuitButton" type="Button" parent="MainMenu"]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_t0a87")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Quit"
+script = ExtResource("4_037ec")
+
+[node name="CreditsLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -350.0
+offset_top = 64.0
+offset_right = 350.0
+offset_bottom = 213.0
+grow_horizontal = 2
+text = "Made by Azzy Steel
+
+Special thanks to the 20GC discord
+community for motivation and support.
+
+Fonts: Kenny High Square, Kenney
+SFX: made using ChipTone, SFB Games
+
+Thank you for playing!"
+horizontal_alignment = 1
+
+[node name="SettingsMenu" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SoundsLabel" type="Label" parent="SettingsMenu"]
+layout_mode = 0
+offset_left = 336.0
+offset_top = 296.0
+offset_right = 431.0
+offset_bottom = 331.0
+text = "Sounds:"
+
+[node name="SoundsHSlider" type="HSlider" parent="SettingsMenu"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 464.0
+offset_top = 304.0
+offset_right = 672.0
+offset_bottom = 320.0
+max_value = 1.0
+step = 0.01
+
+[node name="ShowMenuButton" type="Button" parent="."]
+unique_name_in_owner = true
+visible = false
+material = SubResource("ShaderMaterial_qo0fc")
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -34.0
+offset_top = -68.0
+offset_right = 34.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Back"
+script = ExtResource("4_037ec")
+
+[node name="Title" type="Label" parent="."]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_037ec")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -165.5
+offset_right = 165.5
+offset_bottom = 222.0
+grow_horizontal = 2
+text = "Space Invaders"
+label_settings = SubResource("LabelSettings_kaijy")
+horizontal_alignment = 1
+vertical_alignment = 2

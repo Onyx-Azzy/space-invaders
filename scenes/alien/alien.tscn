@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://tnsr5f30gxpk"]
+
+[ext_resource type="Script" uid="uid://ce3x8rw3t36qq" path="res://scenes/alien/alien.gd" id="1_hspfx"]
+[ext_resource type="AudioStream" uid="uid://buvnq81rrwx7l" path="res://sfx/c3.wav" id="2_k3dtg"]
+[ext_resource type="Texture2D" uid="uid://bjorh7ttcgdn8" path="res://sprites/Alien1.png" id="2_y7hky"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hspfx"]
+size = Vector2(26.8125, 27)
+
+[node name="Alien" type="Area2D" groups=["alien"]]
+collision_layer = 4
+collision_mask = 9
+script = ExtResource("1_hspfx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, 4.7683716e-07)
+scale = Vector2(3, 3)
+texture = ExtResource("2_y7hky")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("RectangleShape2D_hspfx")
+
+[node name="DestroySFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_k3dtg")
+bus = &"Sounds"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true

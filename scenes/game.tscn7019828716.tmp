@@ -1,0 +1,375 @@
+[gd_scene load_steps=18 format=3 uid="uid://ys8sfa4cjddk"]
+
+[ext_resource type="Script" uid="uid://dwyxpnyff5rl6" path="res://game/game.gd" id="1_vsp63"]
+[ext_resource type="PackedScene" uid="uid://drbv2twpd0quj" path="res://game/paddle.tscn" id="2_b686c"]
+[ext_resource type="Script" uid="uid://cdiwgihgaaqt4" path="res://game/goal.gd" id="3_hb504"]
+[ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="4_ee6o4"]
+[ext_resource type="Script" uid="uid://cw3cm0cjhipgr" path="res://game/pause.gd" id="5_4cobl"]
+[ext_resource type="Script" uid="uid://bp8bth8lbm6v8" path="res://game/continue_button.gd" id="6_ln7ps"]
+[ext_resource type="Script" uid="uid://b26ttrxe8cgyu" path="res://game/play_again_button.gd" id="7_pxxsx"]
+[ext_resource type="Script" uid="uid://bi0cvbncjlgh4" path="res://game/setting_button.gd" id="8_u8s88"]
+[ext_resource type="Script" uid="uid://c76ebkrdxvsjl" path="res://game/menu_button.gd" id="9_dxwpq"]
+[ext_resource type="Script" uid="uid://c5b734crfapq5" path="res://menu/music_h_slider.gd" id="10_mhvfb"]
+[ext_resource type="Script" uid="uid://45tbnpe25cdq" path="res://menu/sounds_h_slider.gd" id="11_5e03w"]
+[ext_resource type="Script" uid="uid://dk8qmtm66c6v1" path="res://game/back_button.gd" id="12_leid8"]
+[ext_resource type="AudioStream" uid="uid://cb3q3jdus0wlh" path="res://resources/score-sfx.wav" id="13_8bboj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(960, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(64, 768)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vk6ag"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpkbw"]
+font_size = 60
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_vsp63")
+
+[node name="Paddle_P1" parent="." instance=ExtResource("2_b686c")]
+position = Vector2(112, 272)
+
+[node name="Paddle_P2" parent="." instance=ExtResource("2_b686c")]
+unique_name_in_owner = true
+position = Vector2(848, 272)
+
+[node name="Arena" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Wall" type="StaticBody2D" parent="Arena" groups=["environment"]]
+position = Vector2(0, -32)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall"]
+position = Vector2(480, 16)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Wall2" type="StaticBody2D" parent="Arena" groups=["environment"]]
+position = Vector2(0, 540)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2"]
+position = Vector2(480, 16)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Divider" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 0)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider2" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 32)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider3" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 64)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider4" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 96)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider5" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 128)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider6" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 160)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider7" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 192)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider8" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 224)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider9" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 256)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider10" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 288)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider11" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 320)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider12" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 352)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider13" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 384)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider14" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 416)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider15" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 448)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider16" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 480)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider17" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 512)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Divider18" type="Line2D" parent="Arena"]
+position = Vector2(-29.499, 544)
+scale = Vector2(1.0625, 1)
+points = PackedVector2Array(480, 0, 480, 20)
+width = 2.0
+texture_mode = 1
+
+[node name="Goal_P1" type="Area2D" parent="."]
+position = Vector2(-80, 256)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_hb504")
+player_goal = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal_P1"]
+position = Vector2(18, 2)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Goal_P2" type="Area2D" parent="."]
+position = Vector2(1000, 264)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("3_hb504")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal_P2"]
+position = Vector2(18, -8)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_right = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_ee6o4")
+
+[node name="Score_P1" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 83.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_vk6ag")
+
+[node name="Score_P2" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 83.0
+text = "0"
+label_settings = SubResource("LabelSettings_vpkbw")
+horizontal_alignment = 2
+
+[node name="HitCount" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 104.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_vk6ag")
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="GameOverLabel" type="Label" parent="UI"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = 176.0
+offset_right = 120.0
+offset_bottom = 259.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Player 1 WINS!"
+label_settings = SubResource("LabelSettings_vpkbw")
+horizontal_alignment = 2
+
+[node name="GameMenu" type="VBoxContainer" parent="UI"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 0
+offset_left = -96.0
+offset_top = 344.0
+offset_right = 107.0
+offset_bottom = 387.0
+script = ExtResource("5_4cobl")
+
+[node name="ContinueButton" type="Button" parent="UI/GameMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue"
+script = ExtResource("6_ln7ps")
+
+[node name="PlayAgainButton" type="Button" parent="UI/GameMenu"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+text = "Play again"
+script = ExtResource("7_pxxsx")
+
+[node name="SettingsButton" type="Button" parent="UI/GameMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Settings"
+script = ExtResource("8_u8s88")
+
+[node name="MenuButton" type="Button" parent="UI/GameMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Return to Menu"
+script = ExtResource("9_dxwpq")
+
+[node name="SettingsMenu" type="Control" parent="UI"]
+unique_name_in_owner = true
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MusicLabel" type="Label" parent="UI/SettingsMenu"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = 224.0
+offset_right = -1.0
+offset_bottom = 259.0
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Music:"
+
+[node name="MusicHSlider" type="HSlider" parent="UI/SettingsMenu"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 240.0
+offset_right = 216.0
+offset_bottom = 256.0
+max_value = 1.0
+step = 0.01
+script = ExtResource("10_mhvfb")
+
+[node name="SoundsLabel" type="Label" parent="UI/SettingsMenu"]
+layout_mode = 2
+offset_left = -120.0
+offset_top = 280.0
+offset_right = -25.0
+offset_bottom = 315.0
+text = "Sounds:"
+
+[node name="SoundsHSlider" type="HSlider" parent="UI/SettingsMenu"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 288.0
+offset_right = 216.0
+offset_bottom = 304.0
+max_value = 1.0
+step = 0.01
+script = ExtResource("11_5e03w")
+
+[node name="BackButton" type="Button" parent="UI/SettingsMenu"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 336.0
+offset_right = 44.0
+offset_bottom = 379.0
+text = "Back"
+script = ExtResource("12_leid8")
+
+[node name="ScoreSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_8bboj")
+bus = &"Sounds"

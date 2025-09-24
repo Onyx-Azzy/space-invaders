@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://ys8sfa4cjddk"]
+
+[ext_resource type="PackedScene" uid="uid://drbv2twpd0quj" path="res://Classic/paddle.tscn" id="1_vk6ag"]
+[ext_resource type="Script" uid="uid://dwyxpnyff5rl6" path="res://Classic/classic_mode.gd" id="1_vpkbw"]
+[ext_resource type="Script" uid="uid://cdiwgihgaaqt4" path="res://Classic/goal.gd" id="4_yktxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
+size = Vector2(960, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(64, 608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vk6ag"]
+font_size = 60
+
+[sub_resource type="LabelSettings" id="LabelSettings_vpkbw"]
+font_size = 60
+
+[node name="ClassicMode" type="Node2D"]
+script = ExtResource("1_vpkbw")
+
+[node name="Paddle_P1" parent="." instance=ExtResource("1_vk6ag")]
+position = Vector2(112, 272)
+
+[node name="Paddle_P2" parent="." instance=ExtResource("1_vk6ag")]
+position = Vector2(848, 272)
+player = 2
+
+[node name="Arena" type="Node2D" parent="."]
+
+[node name="Wall" type="StaticBody2D" parent="Arena" groups=["environment"]]
+position = Vector2(0, -32)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall"]
+position = Vector2(480, 16)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Wall2" type="StaticBody2D" parent="Arena" groups=["environment"]]
+position = Vector2(0, 540)
+collision_mask = 0
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2"]
+position = Vector2(480, 16)
+shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Line2D" type="Line2D" parent="Arena"]
+points = PackedVector2Array(480, 0, 480, 544)
+texture_mode = 1
+
+[node name="Goal_P1" type="Area2D" parent="."]
+position = Vector2(-50, 270)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_yktxr")
+player_goal = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal_P1"]
+position = Vector2(18, 2)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="Goal_P2" type="Area2D" parent="."]
+position = Vector2(976, 264)
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("4_yktxr")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal_P2"]
+position = Vector2(18, 2)
+shape = SubResource("RectangleShape2D_1bvp3")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 480.0
+offset_right = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Score_P1" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -96.0
+offset_bottom = 83.0
+grow_horizontal = 0
+text = "0"
+label_settings = SubResource("LabelSettings_vk6ag")
+
+[node name="Score_P2" type="Label" parent="UI"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 96.0
+offset_bottom = 83.0
+text = "0"
+label_settings = SubResource("LabelSettings_vpkbw")
+horizontal_alignment = 2
