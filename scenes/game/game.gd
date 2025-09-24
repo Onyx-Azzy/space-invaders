@@ -8,6 +8,7 @@ var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
 func _ready() -> void:
 	$Arena/Wall.area_entered.connect(_on_wall_area_entered)
 	$Arena/Wall2.area_entered.connect(_on_wall_area_entered)
+	$Timer.timeout.connect(_on_timer_timeout)
 	GameManager.score = 0
 	start_game()
 
@@ -41,8 +42,11 @@ func spawn_aliens():
 
 func _on_wall_area_entered(area: Node2D) -> void:
 	if area.is_in_group("alien"):
-		get_tree().call_group("alien", "change_direction")
-		print("change direction")
+		$Timer.start()
+
+
+func _on_timer_timeout() -> void:
+	get_tree().call_group("alien", "change_direction")
 
 
 func increase_score() -> void:

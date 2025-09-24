@@ -38,6 +38,7 @@ func _on_area_entered(area: Node2D) -> void:
 
 func change_direction() -> void:
 	direction *= -1
+	position.y += 8
 
 
 
@@ -52,7 +53,7 @@ func destroy_alien() -> void:
 
 
 func _on_timer_timeout() -> void:
-	position.x += 32 * direction
+	position.x += 8 * direction
 	if $Sprite2D.frame == 0:
 		$Sprite2D.frame = 1
 	else:
