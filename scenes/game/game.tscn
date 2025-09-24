@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ys8sfa4cjddk"]
+[gd_scene load_steps=6 format=3 uid="uid://ys8sfa4cjddk"]
 
 [ext_resource type="Script" uid="uid://dwyxpnyff5rl6" path="res://scenes/game/game.gd" id="1_ftsea"]
 [ext_resource type="PackedScene" uid="uid://drbv2twpd0quj" path="res://scenes/player/player.tscn" id="2_otnwt"]
@@ -6,6 +6,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(64, 584)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sr1o"]
+size = Vector2(64, 124)
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_ftsea")
@@ -17,7 +20,7 @@ position = Vector2(480, 488)
 [node name="Arena" type="Node2D" parent="."]
 
 [node name="Wall" type="Area2D" parent="Arena" groups=["environment"]]
-position = Vector2(0, 280)
+position = Vector2(-16, 280)
 collision_mask = 6
 metadata/_edit_group_ = true
 
@@ -25,12 +28,30 @@ metadata/_edit_group_ = true
 shape = SubResource("RectangleShape2D_h2yge")
 
 [node name="Wall2" type="Area2D" parent="Arena" groups=["environment"]]
-position = Vector2(960, 280)
+position = Vector2(976, 280)
 collision_mask = 6
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall2"]
 shape = SubResource("RectangleShape2D_h2yge")
+
+[node name="Wall3" type="StaticBody2D" parent="Arena" groups=["environment"]]
+position = Vector2(976, 280)
+collision_mask = 6
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall3"]
+position = Vector2(0, 230)
+shape = SubResource("RectangleShape2D_0sr1o")
+
+[node name="Wall4" type="StaticBody2D" parent="Arena" groups=["environment"]]
+position = Vector2(-16, 280)
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena/Wall4"]
+position = Vector2(0, 230)
+shape = SubResource("RectangleShape2D_0sr1o")
 
 [node name="UI Layer" type="CanvasLayer" parent="."]
 

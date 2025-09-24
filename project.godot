@@ -56,6 +56,13 @@ pause={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Environment"
+2d_physics/layer_2="Player"
+2d_physics/layer_3="Alien"
+2d_physics/layer_4="Bullet"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
