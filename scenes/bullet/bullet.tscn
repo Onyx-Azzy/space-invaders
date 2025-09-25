@@ -4,16 +4,16 @@
 [ext_resource type="Script" uid="uid://bopqeyq8rbkoc" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83itf"]
-size = Vector2(10, 32)
+size = Vector2(4, 18)
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
 collision_layer = 8
-collision_mask = 6
+collision_mask = 14
 script = ExtResource("1_83itf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(3.5762787e-07, 0)
-scale = Vector2(0.6666667, 0.5)
+position = Vector2(2.842171e-14, 5.9604645e-08)
+scale = Vector2(0.33333337, 0.28125)
 texture = ExtResource("1_7c8un")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -6,7 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://c586gdm45t285" path="res://resources/panel.tres" id="3_7vp6q"]
 [ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_pfayw"]
 [ext_resource type="Material" uid="uid://cj8hwho1qqhcn" path="res://resources/button_shader.tres" id="5_pfayw"]
-[ext_resource type="Texture2D" uid="uid://cm1k4u0h67i77" path="res://sprites/Player.png" id="7_7vp6q"]
+[ext_resource type="Texture2D" uid="uid://csocfo8l5mpa4" path="res://sprites/Player.png" id="7_7vp6q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vk6ag"]
 font_size = 60

@@ -1,6 +1,8 @@
 @icon("res://sprites/player.png")
 class_name Player extends CharacterBody2D
 
+signal player_destroyed
+
 const SPEED := 700.0
 
 var acceleration := 10.0
@@ -13,6 +15,7 @@ var shooting := false
 
 func _ready() -> void:
 	$Timer.timeout.connect(_on_timer_timeout)
+	player_destroyed.connect(get_parent().player_destroyed)
 
 
 func _physics_process(delta: float) -> void:
@@ -33,7 +36,7 @@ func _input(event: InputEvent) -> void:
 
 func fire_bullet() -> void:
 	var instance = bullet.instantiate()
-	instance.position = position
+	instance.position = Vector2(position.x, position.y - 16)
 	add_sibling(instance)
 	shooting = true
 	$Timer.start()
@@ -41,3 +44,8 @@ func fire_bullet() -> void:
 
 func _on_timer_timeout() -> void:
 	shooting = false
+
+
+func destroy_player() -> void:
+	player_destroyed.emit()
+	queue_free()

@@ -32,7 +32,7 @@ func update_highscore() -> void:
 
 
 func update_lives() -> void:
-	%BallIndicatorLabel.text = str(GameManager.lives)
+	%LivesRemainingLabel.text = str(GameManager.lives)
 
 
 func toggle_pause()-> void:

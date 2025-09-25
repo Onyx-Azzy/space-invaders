@@ -1,5 +1,6 @@
 extends Node2D
 
+@onready var player: PackedScene = preload("res://scenes/player/player.tscn")
 @onready var alien: PackedScene = preload("res://scenes/alien/alien.tscn")
 
 var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
@@ -19,12 +20,19 @@ func start_game() -> void:
 	GameManager.aliens_remaining = 0
 	GameManager.lives = 3
 	GameManager.level = 1
+	spawn_player()
 	spawn_aliens()
 
 
-func spawn_aliens():
-	var number_of_rows = 5
+func spawn_player() -> void:
+	var instance = player.instantiate()
+	instance.position = Vector2(480, 488)
+	add_child(instance)
+
+
+func spawn_aliens() -> void:
 	var number_of_columns = 11
+	var number_of_rows = 5
 	var start_pos_x = 64
 	var pos_x = start_pos_x
 	var pos_y = 88
@@ -32,6 +40,8 @@ func spawn_aliens():
 		for column in number_of_columns:
 			var instance = alien.instantiate()
 			instance.alien_type = alien_type_order[row]
+			instance.column_group = column
+			instance.row_group = row
 			instance.position = Vector2(pos_x, pos_y)
 			add_child(instance)
 			GameManager.aliens_remaining += 1
@@ -52,6 +62,16 @@ func _on_timer_timeout() -> void:
 func increase_score() -> void:
 	GameManager.score += 1 * GameManager.level
 	%UI.update_score()
+
+
+func player_destroyed() -> void:
+	GameManager.lives -= 1
+	%UI.update_lives()
+	await get_tree().create_timer(2.0).timeout
+	if GameManager.lives > 0:
+		spawn_player()
+	else:
+		game_over()
 
 
 func level_cleared() -> void:
