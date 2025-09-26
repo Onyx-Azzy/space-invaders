@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d04m4l8ysa3bt"]
+
+[ext_resource type="Script" uid="uid://bheu7k552jno6" path="res://scenes/alien/mothership.gd" id="1_8letq"]
+[ext_resource type="Texture2D" uid="uid://bukm6wx6cvfn" path="res://sprites/Alien4.png" id="1_wyfpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8letq"]
+size = Vector2(16, 7.3333335)
+
+[node name="Mothership" type="Area2D"]
+modulate = Color(1, 0.46666667, 0.65882355, 1)
+scale = Vector2(3, 3)
+collision_layer = 4
+collision_mask = 8
+script = ExtResource("1_8letq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wyfpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.1920929e-07)
+shape = SubResource("RectangleShape2D_8letq")

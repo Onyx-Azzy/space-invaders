@@ -58,7 +58,7 @@ func change_direction() -> void:
 func destroy_alien() -> void:
 	GameManager.aliens_destroyed += 1
 	GameManager.aliens_remaining -= 1
-	alien_destroyed.emit()
+	alien_destroyed.emit(1 * GameManager.level)
 	if exposed == true:
 		get_tree().call_group("alien", "check_exposed", column_group, row_group)
 	visible = false

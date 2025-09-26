@@ -53,6 +53,10 @@ shape = SubResource("RectangleShape2D_0sr1o")
 [node name="UI" parent="UI Layer" instance=ExtResource("3_kelw5")]
 unique_name_in_owner = true
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ChangeDirectionTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="MothershipTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true

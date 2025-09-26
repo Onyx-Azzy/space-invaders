@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player: PackedScene = preload("res://scenes/player/player.tscn")
 @onready var alien: PackedScene = preload("res://scenes/alien/alien.tscn")
+@onready var mothership: PackedScene = preload("res://scenes/alien/mothership.tscn")
 
 var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
 
@@ -9,8 +10,9 @@ var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
 func _ready() -> void:
 	$Arena/Wall.area_entered.connect(_on_wall_area_entered)
 	$Arena/Wall2.area_entered.connect(_on_wall_area_entered)
-	$Timer.timeout.connect(_on_timer_timeout)
-	GameManager.score = 0
+	$ChangeDirectionTimer.timeout.connect(_on_change_direction_timer_timeout)
+	$MothershipTimer.timeout.connect(_on_mothership_timer_timeout)
+
 	start_game()
 
 
@@ -20,6 +22,9 @@ func start_game() -> void:
 	GameManager.aliens_remaining = 0
 	GameManager.lives = 3
 	GameManager.level = 1
+	
+	$MothershipTimer.wait_time = randf_range(10,30)
+	
 	spawn_player()
 	spawn_aliens()
 
@@ -52,15 +57,28 @@ func spawn_aliens() -> void:
 
 func _on_wall_area_entered(area: Node2D) -> void:
 	if area.is_in_group("alien"):
-		$Timer.start()
+		$ChangeDirectionTimer.start()
 
 
-func _on_timer_timeout() -> void:
+func _on_change_direction_timer_timeout() -> void:
 	get_tree().call_group("alien", "change_direction")
 
 
-func increase_score() -> void:
-	GameManager.score += 1 * GameManager.level
+func _on_mothership_timer_timeout() -> void:
+	var instance = mothership.instantiate()
+	var random_position = randi_range(1, 2)
+	if random_position == 1:
+		instance.position = Vector2(-40, 40)
+		instance.direction = 1
+	else:
+		instance.position = Vector2(1000, 40)
+		instance.direction = -1
+	add_child(instance)
+	$MothershipTimer.wait_time = randf_range(10,30)
+
+
+func increase_score(amount: int) -> void:
+	GameManager.score += amount
 	%UI.update_score()
 
 
