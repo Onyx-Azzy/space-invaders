@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dewc1p28mselt"]
+
+[ext_resource type="PackedScene" uid="uid://bskcd4mtfpltd" path="res://scenes/bunker/bunker_section.tscn" id="1_cl7vn"]
+
+[node name="Bunker" type="Node2D"]
+
+[node name="BunkerSection" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-24, -24)
+
+[node name="BunkerSection2" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-8, -24)
+sprite_frame = 1
+
+[node name="BunkerSection3" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(8, -24)
+sprite_frame = 1
+
+[node name="BunkerSection4" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(24, -24)
+sprite_frame = 2
+
+[node name="BunkerSection5" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-24, -8)
+sprite_frame = 1
+
+[node name="BunkerSection6" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-8, -8)
+sprite_frame = 1
+
+[node name="BunkerSection7" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(8, -8)
+sprite_frame = 1
+
+[node name="BunkerSection8" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(24, -8)
+sprite_frame = 1
+
+[node name="BunkerSection9" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-24, 8)
+sprite_frame = 1
+
+[node name="BunkerSection10" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-8, 8)
+sprite_frame = 5
+
+[node name="BunkerSection11" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(8, 8)
+sprite_frame = 3
+
+[node name="BunkerSection12" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(24, 8)
+sprite_frame = 1
+
+[node name="BunkerSection13" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-24, 24)
+sprite_frame = 1
+
+[node name="BunkerSection14" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(24, 24)
+sprite_frame = 1

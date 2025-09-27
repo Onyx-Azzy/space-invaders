@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ys8sfa4cjddk"]
+[gd_scene load_steps=6 format=3 uid="uid://ys8sfa4cjddk"]
 
 [ext_resource type="Script" uid="uid://dwyxpnyff5rl6" path="res://scenes/game/game.gd" id="1_ftsea"]
+[ext_resource type="PackedScene" uid="uid://dewc1p28mselt" path="res://scenes/bunker/bunker.tscn" id="3_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://oexrqlchrxrc" path="res://scenes/ui/ui.tscn" id="3_kelw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
@@ -60,3 +61,15 @@ one_shot = true
 [node name="MothershipTimer" type="Timer" parent="."]
 wait_time = 3.0
 autostart = true
+
+[node name="Bunker" parent="." instance=ExtResource("3_0sr1o")]
+position = Vector2(192, 440)
+
+[node name="Bunker2" parent="." instance=ExtResource("3_0sr1o")]
+position = Vector2(384, 440)
+
+[node name="Bunker3" parent="." instance=ExtResource("3_0sr1o")]
+position = Vector2(576, 440)
+
+[node name="Bunker4" parent="." instance=ExtResource("3_0sr1o")]
+position = Vector2(768, 440)
