@@ -10,6 +10,7 @@ var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
 func _ready() -> void:
 	$Arena/Wall.area_entered.connect(_on_wall_area_entered)
 	$Arena/Wall2.area_entered.connect(_on_wall_area_entered)
+	$StepTimer.timeout.connect(_on_step_timer_timeout)
 	$ChangeDirectionTimer.timeout.connect(_on_change_direction_timer_timeout)
 	$MothershipTimer.timeout.connect(_on_mothership_timer_timeout)
 
@@ -23,10 +24,14 @@ func start_game() -> void:
 	GameManager.lives = 3
 	GameManager.level = 1
 	
-	$MothershipTimer.wait_time = randf_range(10,30)
+	
 	
 	spawn_player()
 	spawn_aliens()
+
+	
+	$MothershipTimer.wait_time = randf_range(20,40)
+
 
 
 func spawn_player() -> void:
@@ -36,6 +41,7 @@ func spawn_player() -> void:
 
 
 func spawn_aliens() -> void:
+	$StepTimer.stop()
 	var number_of_columns = 11
 	var number_of_rows = 5
 	var start_pos_x = 64
@@ -53,11 +59,18 @@ func spawn_aliens() -> void:
 			pos_x += 48
 		pos_x = start_pos_x
 		pos_y += 32
+	$StepTimer.wait_time = GameManager.aliens_remaining * 0.02
+	$StepTimer.start()
 
 
 func _on_wall_area_entered(area: Node2D) -> void:
 	if area.is_in_group("alien"):
 		$ChangeDirectionTimer.start()
+
+
+func _on_step_timer_timeout() -> void:
+	get_tree().call_group("alien", "step")
+	$StepTimer.wait_time = GameManager.aliens_remaining * 0.02
 
 
 func _on_change_direction_timer_timeout() -> void:
@@ -74,7 +87,7 @@ func _on_mothership_timer_timeout() -> void:
 		instance.position = Vector2(1000, 40)
 		instance.direction = -1
 	add_child(instance)
-	$MothershipTimer.wait_time = randf_range(10,30)
+	$MothershipTimer.wait_time = randf_range(30,60)
 
 
 func increase_score(amount: int) -> void:

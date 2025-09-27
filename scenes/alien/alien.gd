@@ -25,7 +25,6 @@ var exposed = false
 
 func _ready() -> void:
 	# connect signals
-	$StepTimer.timeout.connect(_on_step_timer_timeout)
 	$ShootTimer.timeout.connect(_on_shoot_timer_timeout)
 	area_entered.connect(_on_area_entered)
 	alien_destroyed.connect(get_parent().increase_score)
@@ -39,20 +38,29 @@ func _ready() -> void:
 	# initialise shooting
 	if row_group == 4:
 		exposed = true
-		$ShootTimer.wait_time = randf_range(3.0, 10.0)
+		$ShootTimer.wait_time = randf_range(5.0, 15.0)
 		$ShootTimer.start()
 
 
-func _on_area_entered(area: Node2D) -> void:
-	if area.is_in_group("bullet"):
-		area.queue_free()
-		destroy_alien()
+# movement
+func step() -> void:
+	position.x += 8 * direction
+	if $Sprite2D.frame == 0:
+		$Sprite2D.frame = 1
+	else:
+		$Sprite2D.frame = 0
 
 
 func change_direction() -> void:
 	direction *= -1
 	position.y += 8
 
+
+# death
+func _on_area_entered(area: Node2D) -> void:
+	if area.is_in_group("bullet"):
+		area.queue_free()
+		destroy_alien()
 
 
 func destroy_alien() -> void:
@@ -67,20 +75,13 @@ func destroy_alien() -> void:
 		level_cleared.emit()
 
 
-func _on_step_timer_timeout() -> void:
-	position.x += 8 * direction
-	if $Sprite2D.frame == 0:
-		$Sprite2D.frame = 1
-	else:
-		$Sprite2D.frame = 0
-
-
+# shooting
 func _on_shoot_timer_timeout() -> void:
 	var instance = bullet.instantiate()
 	instance.position = Vector2(position.x, position.y + 21)
 	instance.bullet_direction = 1
 	add_sibling(instance)
-	$ShootTimer.wait_time = randf_range(3.0, 10.0)
+	$ShootTimer.wait_time = randf_range(5.0, 15.0)
 	$ShootTimer.start()
 
 

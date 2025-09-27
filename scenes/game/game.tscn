@@ -55,8 +55,11 @@ shape = SubResource("RectangleShape2D_0sr1o")
 unique_name_in_owner = true
 
 [node name="ChangeDirectionTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 one_shot = true
+
+[node name="StepTimer" type="Timer" parent="."]
+wait_time = 0.55
 
 [node name="MothershipTimer" type="Timer" parent="."]
 wait_time = 3.0

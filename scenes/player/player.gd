@@ -3,10 +3,10 @@ class_name Player extends CharacterBody2D
 
 signal player_destroyed
 
-const SPEED := 700.0
+const SPEED := 500.0
 
 var acceleration := 10.0
-var deceleration := 20.0
+var deceleration := 30.0
 
 var bullet := preload("res://scenes/bullet/bullet.tscn")
 

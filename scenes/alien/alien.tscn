@@ -27,8 +27,5 @@ unique_name_in_owner = true
 stream = ExtResource("2_k3dtg")
 bus = &"Sounds"
 
-[node name="StepTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="ShootTimer" type="Timer" parent="."]
 one_shot = true

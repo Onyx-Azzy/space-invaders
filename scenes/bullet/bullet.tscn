@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bopqeyq8rbkoc" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83itf"]
-size = Vector2(4, 18)
+size = Vector2(3, 16)
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
 collision_layer = 8

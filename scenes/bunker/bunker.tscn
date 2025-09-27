@@ -5,56 +5,223 @@
 [node name="Bunker" type="Node2D"]
 
 [node name="BunkerSection" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-24, -24)
-
-[node name="BunkerSection2" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-8, -24)
-sprite_frame = 1
-
-[node name="BunkerSection3" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(8, -24)
-sprite_frame = 1
-
-[node name="BunkerSection4" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(24, -24)
-sprite_frame = 2
-
-[node name="BunkerSection5" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-24, -8)
-sprite_frame = 1
-
-[node name="BunkerSection6" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-8, -8)
-sprite_frame = 1
+position = Vector2(-20, -28)
 
 [node name="BunkerSection7" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(8, -8)
+position = Vector2(-12, -28)
 sprite_frame = 1
 
-[node name="BunkerSection8" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(24, -8)
-sprite_frame = 1
+[node name="BunkerSection2" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-4, -28)
+sprite_frame = 2
 
-[node name="BunkerSection9" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-24, 8)
-sprite_frame = 1
+[node name="BunkerSection17" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, -20)
+sprite_frame = 2
 
-[node name="BunkerSection10" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-8, 8)
+[node name="BunkerSection23" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, -12)
+sprite_frame = 2
+
+[node name="BunkerSection24" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, -12)
+sprite_frame = 2
+
+[node name="BunkerSection25" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-12, -12)
+sprite_frame = 2
+
+[node name="BunkerSection26" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-4, -12)
+sprite_frame = 2
+
+[node name="BunkerSection27" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(4, -12)
+sprite_frame = 2
+
+[node name="BunkerSection28" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, -12)
+sprite_frame = 2
+
+[node name="BunkerSection29" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, -12)
+sprite_frame = 2
+
+[node name="BunkerSection30" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, -12)
+sprite_frame = 2
+
+[node name="BunkerSection31" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, -4)
+sprite_frame = 2
+
+[node name="BunkerSection39" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, 4)
+sprite_frame = 2
+
+[node name="BunkerSection40" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, 12)
+sprite_frame = 2
+
+[node name="BunkerSection41" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, 20)
+sprite_frame = 2
+
+[node name="BunkerSection42" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, 28)
+sprite_frame = 2
+
+[node name="BunkerSection43" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, 28)
+sprite_frame = 2
+
+[node name="BunkerSection44" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, 20)
+sprite_frame = 2
+
+[node name="BunkerSection45" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, 12)
+sprite_frame = 2
+
+[node name="BunkerSection46" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, 4)
+sprite_frame = 2
+
+[node name="BunkerSection47" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, 4)
+sprite_frame = 2
+
+[node name="BunkerSection48" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, 4)
+sprite_frame = 2
+
+[node name="BunkerSection49" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, 12)
+sprite_frame = 2
+
+[node name="BunkerSection50" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, 12)
+sprite_frame = 2
+
+[node name="BunkerSection51" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, 20)
+sprite_frame = 2
+
+[node name="BunkerSection55" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, 20)
 sprite_frame = 5
 
-[node name="BunkerSection11" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(8, 8)
+[node name="BunkerSection56" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-12, 20)
+sprite_frame = 9
+
+[node name="BunkerSection57" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-4, 12)
+sprite_frame = 8
+
+[node name="BunkerSection62" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(4, 12)
+sprite_frame = 6
+
+[node name="BunkerSection52" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, 20)
+sprite_frame = 2
+
+[node name="BunkerSection53" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, 28)
+sprite_frame = 2
+
+[node name="BunkerSection54" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, 28)
+sprite_frame = 2
+
+[node name="BunkerSection32" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-20, -4)
+sprite_frame = 2
+
+[node name="BunkerSection33" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-12, -4)
+sprite_frame = 2
+
+[node name="BunkerSection58" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-12, 4)
+sprite_frame = 2
+
+[node name="BunkerSection59" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-12, 12)
+sprite_frame = 2
+
+[node name="BunkerSection34" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-4, -4)
+sprite_frame = 2
+
+[node name="BunkerSection35" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(4, -4)
+sprite_frame = 2
+
+[node name="BunkerSection63" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(4, 4)
+sprite_frame = 2
+
+[node name="BunkerSection64" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-4, 4)
+sprite_frame = 2
+
+[node name="BunkerSection36" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, -4)
+sprite_frame = 2
+
+[node name="BunkerSection60" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, 4)
+sprite_frame = 2
+
+[node name="BunkerSection61" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, 12)
+sprite_frame = 2
+
+[node name="BunkerSection37" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, -4)
+sprite_frame = 2
+
+[node name="BunkerSection38" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, -4)
+sprite_frame = 2
+
+[node name="BunkerSection18" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-12, -20)
+sprite_frame = 2
+
+[node name="BunkerSection19" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-4, -20)
+sprite_frame = 2
+
+[node name="BunkerSection20" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(4, -20)
+sprite_frame = 2
+
+[node name="BunkerSection21" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, -20)
+sprite_frame = 2
+
+[node name="BunkerSection22" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, -20)
+sprite_frame = 2
+
+[node name="BunkerSection3" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(4, -28)
+sprite_frame = 2
+
+[node name="BunkerSection4" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(12, -28)
 sprite_frame = 3
 
-[node name="BunkerSection12" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(24, 8)
-sprite_frame = 1
+[node name="BunkerSection15" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(-28, -20)
 
-[node name="BunkerSection13" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(-24, 24)
-sprite_frame = 1
+[node name="BunkerSection6" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(20, -28)
+sprite_frame = 4
 
-[node name="BunkerSection14" parent="." instance=ExtResource("1_cl7vn")]
-position = Vector2(24, 24)
-sprite_frame = 1
+[node name="BunkerSection16" parent="." instance=ExtResource("1_cl7vn")]
+position = Vector2(28, -20)
+sprite_frame = 4

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dvv6gibf2hpvx" path="res://scenes/bunker/bunker_section.gd" id="1_fywsi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m7876"]
-size = Vector2(4, 4)
+size = Vector2(2, 2)
 
 [node name="BunkerSection" type="Area2D"]
 scale = Vector2(4, 4)
@@ -15,7 +15,7 @@ script = ExtResource("1_fywsi")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0.89411765, 0.21176471, 1)
 texture = ExtResource("1_cl7vn")
-hframes = 3
+hframes = 5
 vframes = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
