@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bukm6wx6cvfn" path="res://sprites/Alien4.png" id="1_wyfpb"]
 [ext_resource type="Shader" uid="uid://biy8o3da7uctt" path="res://resources/flash.gdshader" id="2_kak5s"]
 [ext_resource type="AudioStream" uid="uid://bqcou51270i26" path="res://sfx/destroy_sfx.wav" id="3_m2r77"]
-[ext_resource type="AudioStream" uid="uid://dfbhm2irgvj81" path="res://sfx/sound.wav" id="5_kak5s"]
+[ext_resource type="AudioStream" uid="uid://dfbhm2irgvj81" path="res://sfx/mothership_sfx.wav" id="5_kak5s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fkhoi"]
 resource_local_to_scene = true

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dfbhm2irgvj81"
-path="res://.godot/imported/sound.wav-402a1345b57922e11b2a77183c4e2c3e.sample"
+path="res://.godot/imported/mothership_sfx.wav-395a6e1fb56a60ee21e0c61567c33569.sample"
 
 [deps]
 
-source_file="res://sfx/sound.wav"
-dest_files=["res://.godot/imported/sound.wav-402a1345b57922e11b2a77183c4e2c3e.sample"]
+source_file="res://sfx/mothership_sfx.wav"
+dest_files=["res://.godot/imported/mothership_sfx.wav-395a6e1fb56a60ee21e0c61567c33569.sample"]
 
 [params]
 
