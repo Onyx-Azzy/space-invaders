@@ -1,17 +1,88 @@
-[gd_scene load_steps=4 format=3 uid="uid://drbv2twpd0quj"]
+[gd_scene load_steps=11 format=3 uid="uid://drbv2twpd0quj"]
 
 [ext_resource type="Script" uid="uid://b2ximtvwhjo1r" path="res://scenes/player/player.gd" id="1_tbytw"]
 [ext_resource type="Texture2D" uid="uid://csocfo8l5mpa4" path="res://sprites/Player.png" id="2_2sa55"]
+[ext_resource type="Shader" uid="uid://biy8o3da7uctt" path="res://resources/flash.gdshader" id="2_p47bc"]
+[ext_resource type="AudioStream" uid="uid://drdg87v5fneoy" path="res://sfx/shoot_sfx.wav" id="3_gmlin"]
+[ext_resource type="AudioStream" uid="uid://bqcou51270i26" path="res://sfx/destroy_sfx.wav" id="4_lvxji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_75vfm"]
+resource_local_to_scene = true
+shader = ExtResource("2_p47bc")
+shader_parameter/active = false
+shader_parameter/tint = Color(1, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2sa55"]
 size = Vector2(19.999956, 40)
 
-[node name="Paddle" type="CharacterBody2D" groups=["player"]]
+[sub_resource type="Animation" id="Animation_0owmy"]
+resource_name = "hit_flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_qek5x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5gtgg"]
+_data = {
+&"RESET": SubResource("Animation_qek5x"),
+&"hit_flash": SubResource("Animation_0owmy")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 9
 script = ExtResource("1_tbytw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_75vfm")
 scale = Vector2(3, 3)
 texture = ExtResource("2_2sa55")
 
@@ -20,5 +91,18 @@ position = Vector2(-7.2399007e-06, 1.9999781)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_2sa55")
 
-[node name="Timer" type="Timer" parent="."]
+[node name="ShootTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="ShootSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gmlin")
+bus = &"Sounds"
+
+[node name="DestroySFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lvxji")
+bus = &"Sounds"
+
+[node name="HitFlashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5gtgg")
+}

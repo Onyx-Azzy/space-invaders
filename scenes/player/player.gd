@@ -1,30 +1,34 @@
-@icon("res://sprites/player.png")
-class_name Player extends CharacterBody2D
+extends CharacterBody2D
 
 signal player_destroyed
 
 const SPEED := 500.0
 
-var acceleration := 10.0
-var deceleration := 30.0
+const ACCELERATION := 10.0
+const DECELARATION := 10.0
 
 var bullet := preload("res://scenes/bullet/bullet.tscn")
+var explosion := preload("res://scenes/player/explosion.tscn")
+
+@onready var hit_flash_player: AnimationPlayer = $HitFlashPlayer
 
 var shooting := false
 
 
 func _ready() -> void:
-	$Timer.timeout.connect(_on_timer_timeout)
+	$ShootTimer.timeout.connect(_on_timer_timeout)
+	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx())
+	$DestroySFX.finished.connect(func(): queue_free())
 	player_destroyed.connect(get_parent().player_destroyed)
 
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	## player input
 	var direction := Input.get_axis("move_left", "move_right")
 	if direction:
-		velocity.x = lerp(velocity.x, direction * SPEED, acceleration * delta)
+		velocity.x = lerp(velocity.x, direction * SPEED, ACCELERATION * delta)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, deceleration * delta)
+		velocity.x = lerp(velocity.x, 0.0, DECELARATION * delta)
 
 	move_and_slide()
 
@@ -36,16 +40,29 @@ func _input(event: InputEvent) -> void:
 
 func fire_bullet() -> void:
 	var instance = bullet.instantiate()
-	instance.position = Vector2(position.x, position.y - 16)
+	instance.position = Vector2(position.x, position.y - 17  )
 	add_sibling(instance)
 	shooting = true
-	$Timer.start()
+	$ShootTimer.start()
+	$ShootSFX.pitch_scale = randf_range(0.8, 0.9)
+	$ShootSFX.play()
 
 
 func _on_timer_timeout() -> void:
 	shooting = false
 
 
-func destroy_player() -> void:
+func destroy() -> void:	
+	# play audio
+	$DestroySFX.pitch_scale = randf_range(0.8, 0.85)
+	$DestroySFX.play()
+	
+	# destroy player scene
 	player_destroyed.emit()
-	queue_free()
+
+
+func explosion_fx() -> void:
+	# instantiate exposion particles
+	var instance = explosion.instantiate()
+	instance.position = position
+	add_sibling(instance)

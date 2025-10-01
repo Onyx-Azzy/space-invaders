@@ -1,0 +1,17 @@
+[remap]
+
+importer="com.timothyqiu.gdfxr.importer"
+type="AudioStreamWAV"
+uid="uid://csg4qu2m064la"
+path="res://.godot/imported/mothership_exposion.sfxr-cdedbe0290cedb41b72d423fbc1a9fc8.sample"
+
+[deps]
+
+source_file="res://sfx/mothership_exposion.sfxr"
+dest_files=["res://.godot/imported/mothership_exposion.sfxr-cdedbe0290cedb41b72d423fbc1a9fc8.sample"]
+
+[params]
+
+loop=false
+bit_depth=0
+sample_rate=0

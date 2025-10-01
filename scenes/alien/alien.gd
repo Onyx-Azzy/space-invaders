@@ -1,5 +1,4 @@
-@icon("res://sprites/alien4.png")
-class_name Alien extends Area2D
+extends Area2D
 
 signal alien_destroyed
 signal level_cleared
@@ -13,6 +12,10 @@ var alien_sprites : Array[Texture] = [
 	]
 	
 var bullet := preload("res://scenes/bullet/bullet.tscn")
+var explosion := preload("res://scenes/player/explosion.tscn")
+
+@onready var hit_flash_player: AnimationPlayer = $HitFlashPlayer
+
 	
 var alien_colors : Array[Color] = [Color("FFEC27"),Color("29ADFF"),Color("FF004D")]
 
@@ -26,10 +29,10 @@ var exposed = false
 func _ready() -> void:
 	# connect signals
 	$ShootTimer.timeout.connect(_on_shoot_timer_timeout)
-	area_entered.connect(_on_area_entered)
 	alien_destroyed.connect(get_parent().increase_score)
 	level_cleared.connect(get_parent().level_cleared)
-	%DestroySFX.finished.connect(func(): queue_free())
+	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx())
+	$DestroySFX.finished.connect(func(): queue_free())
 	
 	# set style
 	$Sprite2D.texture = alien_sprites[alien_type]
@@ -38,7 +41,7 @@ func _ready() -> void:
 	# initialise shooting
 	if row_group == 4:
 		exposed = true
-		$ShootTimer.wait_time = randf_range(5.0, 15.0)
+		$ShootTimer.wait_time = randf_range(5.0, 20.0)
 		$ShootTimer.start()
 
 
@@ -57,20 +60,18 @@ func change_direction() -> void:
 
 
 # death
-func _on_area_entered(area: Node2D) -> void:
-	if area.is_in_group("bullet"):
-		area.queue_free()
-		destroy_alien()
-
-
-func destroy_alien() -> void:
+func destroy() -> void:
+	# play audio
+	$DestroySFX.pitch_scale = randf_range(0.95, 1.05)
+	$DestroySFX.play()
+	
 	GameManager.aliens_destroyed += 1
 	GameManager.aliens_remaining -= 1
 	alien_destroyed.emit(1 * GameManager.level)
 	if exposed == true:
 		get_tree().call_group("alien", "check_exposed", column_group, row_group)
 	visible = false
-	%DestroySFX.play()
+	
 	if GameManager.aliens_remaining == 0:
 		level_cleared.emit()
 
@@ -81,8 +82,10 @@ func _on_shoot_timer_timeout() -> void:
 	instance.position = Vector2(position.x, position.y + 21)
 	instance.bullet_direction = 1
 	add_sibling(instance)
-	$ShootTimer.wait_time = randf_range(5.0, 15.0)
+	$ShootTimer.wait_time = randf_range(3.0, 15.0)
 	$ShootTimer.start()
+	$ShootSFX.pitch_scale = randf_range(1.1, 1.2)
+	$ShootSFX.play()
 
 
 func check_exposed(column, row):
@@ -90,3 +93,10 @@ func check_exposed(column, row):
 		if row_group == row - 1:
 			exposed = true
 			$ShootTimer.start()
+
+
+func explosion_fx() -> void:
+	# instantiate exposion particles
+	var instance = explosion.instantiate()
+	instance.position = position
+	add_sibling(instance)

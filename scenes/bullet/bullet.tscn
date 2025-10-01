@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://gws6a32rrhff"]
+[gd_scene load_steps=5 format=3 uid="uid://gws6a32rrhff"]
 
-[ext_resource type="Texture2D" uid="uid://dte5ydelx8vmg" path="res://sprites/line.png" id="1_7c8un"]
 [ext_resource type="Script" uid="uid://bopqeyq8rbkoc" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
+[ext_resource type="Texture2D" uid="uid://rfuhq2jd3xu7" path="res://sprites/bullet.png" id="2_c6pnf"]
+[ext_resource type="AudioStream" uid="uid://c1uwv8yavqy23" path="res://sfx/hit_sfx.wav" id="3_c6pnf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83itf"]
-size = Vector2(3, 16)
+size = Vector2(1, 5)
 
 [node name="Bullet" type="Area2D" groups=["bullet"]]
 collision_layer = 8
@@ -13,8 +14,13 @@ script = ExtResource("1_83itf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2.842171e-14, 5.9604645e-08)
-scale = Vector2(0.33333337, 0.28125)
-texture = ExtResource("1_7c8un")
+scale = Vector2(3, 3)
+texture = ExtResource("2_c6pnf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_83itf")
+
+[node name="HitSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c6pnf")
+bus = &"Sounds"
