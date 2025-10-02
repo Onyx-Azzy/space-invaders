@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://tnsr5f30gxpk"]
+[gd_scene load_steps=10 format=3 uid="uid://tnsr5f30gxpk"]
 
 [ext_resource type="Script" uid="uid://ce3x8rw3t36qq" path="res://scenes/alien/alien.gd" id="1_hspfx"]
 [ext_resource type="Shader" uid="uid://biy8o3da7uctt" path="res://resources/flash.gdshader" id="2_4lnhc"]
 [ext_resource type="Texture2D" uid="uid://3egp5sf0dej5" path="res://sprites/Alien3.png" id="2_y7hky"]
 [ext_resource type="AudioStream" uid="uid://drdg87v5fneoy" path="res://sfx/shoot_sfx.wav" id="3_6nl3j"]
-[ext_resource type="AudioStream" uid="uid://bqcou51270i26" path="res://sfx/destroy_sfx.wav" id="4_6nl3j"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6bucd"]
 resource_local_to_scene = true
@@ -14,6 +13,21 @@ shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hspfx"]
 size = Vector2(28, 24)
+
+[sub_resource type="Animation" id="Animation_6bucd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_4lnhc"]
 resource_name = "hit_flash"
@@ -29,21 +43,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-
-[sub_resource type="Animation" id="Animation_6bucd"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:material:shader_parameter/active")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4octy"]
@@ -70,10 +69,6 @@ shape = SubResource("RectangleShape2D_hspfx")
 
 [node name="ShootSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_6nl3j")
-bus = &"Sounds"
-
-[node name="DestroySFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_6nl3j")
 bus = &"Sounds"
 
 [node name="ShootTimer" type="Timer" parent="."]

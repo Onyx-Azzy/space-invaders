@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://d04m4l8ysa3bt"]
+[gd_scene load_steps=10 format=3 uid="uid://d04m4l8ysa3bt"]
 
 [ext_resource type="Script" uid="uid://bheu7k552jno6" path="res://scenes/alien/mothership.gd" id="1_8letq"]
 [ext_resource type="Texture2D" uid="uid://bukm6wx6cvfn" path="res://sprites/Alien4.png" id="1_wyfpb"]
 [ext_resource type="Shader" uid="uid://biy8o3da7uctt" path="res://resources/flash.gdshader" id="2_kak5s"]
-[ext_resource type="AudioStream" uid="uid://bqcou51270i26" path="res://sfx/destroy_sfx.wav" id="3_m2r77"]
 [ext_resource type="AudioStream" uid="uid://dfbhm2irgvj81" path="res://sfx/mothership_sfx.wav" id="5_kak5s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fkhoi"]
@@ -90,10 +89,6 @@ texture = ExtResource("1_wyfpb")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.1920929e-07)
 shape = SubResource("RectangleShape2D_8letq")
-
-[node name="DestroySFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_m2r77")
-bus = &"Sounds"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_kak5s")

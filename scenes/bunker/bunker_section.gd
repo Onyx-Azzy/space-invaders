@@ -10,5 +10,6 @@ func _ready() -> void:
 
 func _on_area_entered(area: Node2D) -> void:
 	if area.is_in_group("bullet"):
+		get_parent().bunker_hit()
 		area.queue_free()
 		queue_free()

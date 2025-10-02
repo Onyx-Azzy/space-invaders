@@ -15,8 +15,7 @@ var moving = true
 func _ready() -> void:
 	# connect signals
 	mothership_destroyed.connect(get_parent().increase_score)
-	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx())
-	$DestroySFX.finished.connect(func(): queue_free())
+	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx(); queue_free())
 	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
 	
 
@@ -31,19 +30,18 @@ func _process(delta: float) -> void:
 
 func destroy() -> void:
 	moving = false
-		
-	# play audio
-	$DestroySFX.pitch_scale = randf_range(0.85,0.9)
-	$DestroySFX.play()
-		
+
 	# increase score
 	mothership_destroyed.emit(50 * GameManager.level)
+
 
 func explosion_fx() -> void:
 	# instantiate exposion particles
 	var instance = explosion.instantiate()
 	instance.position = position
+	instance.pitch_scale = randf_range(0.85, 0.9)
 	add_sibling(instance)
+
 
 func _on_screen_exited() -> void:
 	queue_free()

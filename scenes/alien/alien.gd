@@ -31,8 +31,7 @@ func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_shoot_timer_timeout)
 	alien_destroyed.connect(get_parent().increase_score)
 	level_cleared.connect(get_parent().level_cleared)
-	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx())
-	$DestroySFX.finished.connect(func(): queue_free())
+	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx(); queue_free())
 	
 	# set style
 	$Sprite2D.texture = alien_sprites[alien_type]
@@ -41,7 +40,7 @@ func _ready() -> void:
 	# initialise shooting
 	if row_group == 4:
 		exposed = true
-		$ShootTimer.wait_time = randf_range(5.0, 20.0)
+		$ShootTimer.wait_time = randf_range(2.0, 15.0)
 		$ShootTimer.start()
 
 
@@ -61,10 +60,6 @@ func change_direction() -> void:
 
 # death
 func destroy() -> void:
-	# play audio
-	$DestroySFX.pitch_scale = randf_range(0.95, 1.05)
-	$DestroySFX.play()
-	
 	GameManager.aliens_destroyed += 1
 	GameManager.aliens_remaining -= 1
 	alien_destroyed.emit(1 * GameManager.level)
@@ -82,7 +77,7 @@ func _on_shoot_timer_timeout() -> void:
 	instance.position = Vector2(position.x, position.y + 21)
 	instance.bullet_direction = 1
 	add_sibling(instance)
-	$ShootTimer.wait_time = randf_range(3.0, 15.0)
+	$ShootTimer.wait_time = randf_range(5.0, 15.0)
 	$ShootTimer.start()
 	$ShootSFX.pitch_scale = randf_range(1.1, 1.2)
 	$ShootSFX.play()
@@ -99,4 +94,5 @@ func explosion_fx() -> void:
 	# instantiate exposion particles
 	var instance = explosion.instantiate()
 	instance.position = position
+	instance.pitch_scale = randf_range(0.95, 1.05)
 	add_sibling(instance)

@@ -30,8 +30,8 @@ func start_game() -> void:
 	spawn_aliens()
 
 	
-	$MothershipTimer.wait_time = randf_range(20,40)
-
+	$MothershipTimer.wait_time = randf_range(15,30)
+	$MothershipTimer.start()
 
 
 func spawn_player() -> void:
@@ -87,7 +87,7 @@ func _on_mothership_timer_timeout() -> void:
 		instance.position = Vector2(1000, 40)
 		instance.direction = -1
 	add_child(instance)
-	$MothershipTimer.wait_time = randf_range(30,60)
+	$MothershipTimer.wait_time = randf_range(20,45)
 
 
 func increase_score(amount: int) -> void:
@@ -123,3 +123,7 @@ func hit_stop(duration: float) -> void:
 	Engine.time_scale = 0.0
 	await get_tree().create_timer(duration, true, false, true).timeout
 	Engine.time_scale = 1.0
+
+
+func screen_shake(amount: float) -> void:
+	$Camera2D.add_trauma(amount)
