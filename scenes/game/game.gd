@@ -14,6 +14,7 @@ var current_step_sfx = 3
 
 var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
 
+@onready var alien_column_groups : Array[Array] = [[],[],[],[],[],[],[],[],[],[],[]]
 
 func _ready() -> void:
 	$Arena/Wall.area_entered.connect(_on_wall_area_entered)
@@ -21,7 +22,7 @@ func _ready() -> void:
 	$StepTimer.timeout.connect(_on_step_timer_timeout)
 	$ChangeDirectionTimer.timeout.connect(_on_change_direction_timer_timeout)
 	$MothershipTimer.timeout.connect(_on_mothership_timer_timeout)
-
+	
 	start_game()
 
 
@@ -32,11 +33,8 @@ func start_game() -> void:
 	GameManager.lives = 3
 	GameManager.level = 1
 	
-	
-	
 	spawn_player()
 	spawn_aliens()
-
 	
 	$MothershipTimer.wait_time = randf_range(15,30)
 	$MothershipTimer.start()
@@ -59,12 +57,12 @@ func spawn_aliens() -> void:
 		for column in number_of_columns:
 			var instance = alien.instantiate()
 			instance.alien_type = alien_type_order[row]
+			alien_column_groups[column].append(instance)
 			instance.column_group = column
 			instance.row_group = row
 			instance.position = Vector2(pos_x, pos_y)
 			add_child(instance)
 			GameManager.aliens_remaining += 1
-			%AlienCount.text = "Aliens: " + str(GameManager.aliens_remaining)
 			pos_x += 48
 		pos_x = start_pos_x
 		pos_y += 32
@@ -104,9 +102,13 @@ func _on_mothership_timer_timeout() -> void:
 	$MothershipTimer.wait_time = randf_range(20,45)
 
 
+func alien_destroyed(column, alien) -> void:
+	alien_column_groups[column].erase(alien)
+	increase_score(1 * GameManager.level)
+
+
 func increase_score(amount: int) -> void:
 	GameManager.score += amount
-	%AlienCount.text = "Aliens: " + str(GameManager.aliens_remaining)
 	%UI.update_score()
 
 
