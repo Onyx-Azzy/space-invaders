@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://f4pk17o5bme6"]
+[gd_scene load_steps=14 format=3 uid="uid://f4pk17o5bme6"]
 
 [ext_resource type="Script" uid="uid://dcnxdap7ccm65" path="res://scenes/menu/menu.gd" id="2_t0a87"]
 [ext_resource type="Shader" uid="uid://cxqnwbisq0l7h" path="res://resources/rainbow_gradient.gdshader" id="3_e0arn"]
 [ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_037ec"]
 [ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="4_juveg"]
+[ext_resource type="AudioStream" uid="uid://cqlvfalwj8ova" path="res://sfx/rollover6.ogg" id="5_y1o0p"]
+[ext_resource type="AudioStream" uid="uid://r5fhcmrexigi" path="res://sfx/click1.ogg" id="6_r8yej"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_y1o0p"]
 shader = ExtResource("3_e0arn")
@@ -198,3 +200,13 @@ text = "Space Invaders"
 label_settings = SubResource("LabelSettings_kaijy")
 horizontal_alignment = 1
 vertical_alignment = 2
+
+[node name="RollOverSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("5_y1o0p")
+bus = &"Sounds"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("6_r8yej")
+bus = &"Sounds"

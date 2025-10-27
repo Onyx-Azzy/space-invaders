@@ -2,7 +2,6 @@ extends Control
 
 var index_sounds_bus := AudioServer.get_bus_index("Sounds")
 
-
 func _ready() -> void:
 	%PlayButton.pressed.connect(play_game)
 	%SettingsButton.pressed.connect(show_settings)

@@ -18,7 +18,7 @@ var destroyed := false
 
 func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_timer_timeout)
-	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx(); queue_free())
+	hit_flash_player.animation_finished.connect(func(_anim_name: StringName): explosion_fx(); queue_free())
 	player_destroyed.connect(get_parent().player_destroyed)
 
 

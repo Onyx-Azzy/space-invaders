@@ -15,7 +15,7 @@ var moving = true
 func _ready() -> void:
 	# connect signals
 	mothership_destroyed.connect(get_parent().increase_score)
-	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx(); queue_free())
+	hit_flash_player.animation_finished.connect(func(_anim_name: StringName): explosion_fx(); queue_free())
 	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
 	
 

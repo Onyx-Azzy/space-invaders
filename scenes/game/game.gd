@@ -102,8 +102,8 @@ func _on_mothership_timer_timeout() -> void:
 	$MothershipTimer.wait_time = randf_range(20,45)
 
 
-func alien_destroyed(column, alien) -> void:
-	alien_column_groups[column].erase(alien)
+func alien_destroyed(column, alien_instance) -> void:
+	alien_column_groups[column].erase(alien_instance)
 	increase_score(1 * GameManager.level)
 
 

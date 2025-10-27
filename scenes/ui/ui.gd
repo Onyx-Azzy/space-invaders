@@ -79,3 +79,7 @@ func game_over() -> void:
 	%MenuButton.show()
 	%SettingsButton.hide()
 	%ContinueButton.hide()
+
+
+func play_roll_over() -> void:
+	print("play")

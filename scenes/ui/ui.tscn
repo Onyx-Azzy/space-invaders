@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://oexrqlchrxrc"]
+[gd_scene load_steps=17 format=3 uid="uid://oexrqlchrxrc"]
 
 [ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="1_jcn1r"]
 [ext_resource type="Script" uid="uid://bnpt58qrs3sqr" path="res://scenes/ui/ui.gd" id="2_y220t"]
@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_pfayw"]
 [ext_resource type="Material" uid="uid://cj8hwho1qqhcn" path="res://resources/button_shader.tres" id="5_pfayw"]
 [ext_resource type="Texture2D" uid="uid://csocfo8l5mpa4" path="res://sprites/Player.png" id="7_7vp6q"]
+[ext_resource type="AudioStream" uid="uid://cqlvfalwj8ova" path="res://sfx/rollover6.ogg" id="8_jcn1r"]
+[ext_resource type="AudioStream" uid="uid://r5fhcmrexigi" path="res://sfx/click1.ogg" id="9_uegxj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_vk6ag"]
 font_size = 60
@@ -251,3 +253,11 @@ offset_bottom = 64.0
 text = "3"
 label_settings = SubResource("LabelSettings_g5kmx")
 vertical_alignment = 2
+
+[node name="RollOverSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("8_jcn1r")
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("9_uegxj")

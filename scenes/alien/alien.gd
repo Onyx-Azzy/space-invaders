@@ -31,7 +31,7 @@ func _ready() -> void:
 	$ShootTimer.timeout.connect(_on_shoot_timer_timeout)
 	alien_destroyed.connect(get_parent().alien_destroyed)
 	level_cleared.connect(get_parent().level_cleared)
-	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx(); queue_free())
+	hit_flash_player.animation_finished.connect(func(_anim_name: StringName): explosion_fx(); queue_free())
 	area_entered.connect(_on_area_entered)
 	
 	# set style
@@ -73,7 +73,7 @@ func destroy() -> void:
 	GameManager.aliens_remaining -= 1
 	alien_destroyed.emit(column_group, self)	
 	if exposed == true:
-		get_tree().call_group("alien", "check_exposed", column_group, row_group)
+		get_tree().call_group("alien", "check_exposed", column_group)
 	visible = false
 	
 	if GameManager.aliens_remaining == 0:
@@ -92,7 +92,7 @@ func _on_shoot_timer_timeout() -> void:
 	$ShootSFX.play()
 
 
-func check_exposed(column, row):
+func check_exposed(column):
 	if column_group == column:
 		if self == get_parent().alien_column_groups[column].back():
 			exposed = true
