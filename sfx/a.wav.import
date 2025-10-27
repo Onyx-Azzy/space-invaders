@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dfofrv16rnuau"
-path="res://.godot/imported/fastinvader3.wav-0ee270e3ec8f87611b7261519be666ce.sample"
+uid="uid://bpowx2owmksp5"
+path="res://.godot/imported/a.wav-7065ecf5cf80405d03bbd2c73bffa506.sample"
 
 [deps]
 
-source_file="res://sfx/fastinvader3.wav"
-dest_files=["res://.godot/imported/fastinvader3.wav-0ee270e3ec8f87611b7261519be666ce.sample"]
+source_file="res://sfx/a.wav"
+dest_files=["res://.godot/imported/a.wav-7065ecf5cf80405d03bbd2c73bffa506.sample"]
 
 [params]
 

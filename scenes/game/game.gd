@@ -4,10 +4,10 @@ extends Node2D
 @onready var alien: PackedScene = preload("res://scenes/alien/alien.tscn")
 @onready var mothership: PackedScene = preload("res://scenes/alien/mothership.tscn")
 @onready var step_sfx: Array[AudioStream] = [
-						preload("res://sfx/fastinvader1.wav"),
-						preload("res://sfx/fastinvader2.wav"),
-						preload("res://sfx/fastinvader3.wav"),
-						preload("res://sfx/fastinvader4.wav"),
+						preload("res://sfx/c.wav"),
+						preload("res://sfx/b.wav"),
+						preload("res://sfx/a.wav"),
+						preload("res://sfx/g.wav"),
 								]
 
 var current_step_sfx = 3

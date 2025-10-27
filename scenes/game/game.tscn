@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dewc1p28mselt" path="res://scenes/bunker/bunker.tscn" id="3_0sr1o"]
 [ext_resource type="PackedScene" uid="uid://oexrqlchrxrc" path="res://scenes/ui/ui.tscn" id="3_kelw5"]
 [ext_resource type="Script" uid="uid://c345tpy7sc1te" path="res://scenes/game/camera_2d.gd" id="4_kelw5"]
-[ext_resource type="AudioStream" uid="uid://bwkm56nfiix" path="res://sfx/fastinvader4.wav" id="5_lfrn8"]
+[ext_resource type="AudioStream" uid="uid://ch10myrl6c73s" path="res://sfx/c.wav" id="5_lfrn8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h2yge"]
 size = Vector2(64, 584)
