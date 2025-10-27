@@ -207,6 +207,22 @@ size_flags_stretch_ratio = 0.7
 max_value = 1.0
 step = 0.01
 
+[node name="ScreenShakeHBox" type="HBoxContainer" parent="SettingsMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScreenShakeLabel" type="Label" parent="SettingsMenu/VBoxContainer/ScreenShakeHBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_stretch_ratio = 0.3
+text = "Screen Shake: "
+
+[node name="ScreenShakeToggle" type="CheckBox" parent="SettingsMenu/VBoxContainer/ScreenShakeHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+button_pressed = true
+
 [node name="HideSettingsButton" type="Button" parent="SettingsMenu/VBoxContainer"]
 unique_name_in_owner = true
 material = ExtResource("5_pfayw")

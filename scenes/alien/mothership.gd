@@ -29,6 +29,7 @@ func _process(delta: float) -> void:
 
 
 func destroy() -> void:
+	$destroy_sfx.play()
 	moving = false
 
 	# increase score

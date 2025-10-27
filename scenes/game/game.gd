@@ -3,6 +3,14 @@ extends Node2D
 @onready var player: PackedScene = preload("res://scenes/player/player.tscn")
 @onready var alien: PackedScene = preload("res://scenes/alien/alien.tscn")
 @onready var mothership: PackedScene = preload("res://scenes/alien/mothership.tscn")
+@onready var step_sfx: Array[AudioStream] = [
+						preload("res://sfx/fastinvader1.wav"),
+						preload("res://sfx/fastinvader2.wav"),
+						preload("res://sfx/fastinvader3.wav"),
+						preload("res://sfx/fastinvader4.wav"),
+								]
+
+var current_step_sfx = 3
 
 var alien_type_order : Array[int] = [2, 1, 1, 0, 0]
 
@@ -56,6 +64,7 @@ func spawn_aliens() -> void:
 			instance.position = Vector2(pos_x, pos_y)
 			add_child(instance)
 			GameManager.aliens_remaining += 1
+			%AlienCount.text = "Aliens: " + str(GameManager.aliens_remaining)
 			pos_x += 48
 		pos_x = start_pos_x
 		pos_y += 32
@@ -70,6 +79,11 @@ func _on_wall_area_entered(area: Node2D) -> void:
 
 func _on_step_timer_timeout() -> void:
 	get_tree().call_group("alien", "step")
+	$StepSFX.stream = step_sfx[current_step_sfx]
+	$StepSFX.play()
+	current_step_sfx += 1
+	if current_step_sfx == 4:
+		current_step_sfx = 0
 	$StepTimer.wait_time = GameManager.aliens_remaining * 0.02
 
 
@@ -92,6 +106,7 @@ func _on_mothership_timer_timeout() -> void:
 
 func increase_score(amount: int) -> void:
 	GameManager.score += amount
+	%AlienCount.text = "Aliens: " + str(GameManager.aliens_remaining)
 	%UI.update_score()
 
 

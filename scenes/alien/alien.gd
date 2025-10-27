@@ -32,6 +32,7 @@ func _ready() -> void:
 	alien_destroyed.connect(get_parent().increase_score)
 	level_cleared.connect(get_parent().level_cleared)
 	hit_flash_player.animation_finished.connect(func(anim_name: StringName): explosion_fx(); queue_free())
+	area_entered.connect(_on_area_entered)
 	
 	# set style
 	$Sprite2D.texture = alien_sprites[alien_type]
@@ -56,6 +57,14 @@ func step() -> void:
 func change_direction() -> void:
 	direction *= -1
 	position.y += 8
+
+
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullet"):
+		get_parent().screen_shake(0.1)
+		hit_flash_player.play("hit_flash")
+		await get_parent().hit_stop(0.3)
+		destroy()
 
 
 # death

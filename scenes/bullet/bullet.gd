@@ -20,10 +20,6 @@ func _on_area_entered(area: Node2D) -> void:
 		await get_parent().hit_stop(0.1)
 		queue_free()
 	if area.is_in_group("alien"):
-		get_parent().screen_shake(0.1)
-		area.hit_flash_player.play("hit_flash")
-		await get_parent().hit_stop(0.3)
-		area.destroy()
 		queue_free()
 	if area.is_in_group("mothership"):
 		get_parent().screen_shake(0.2)
