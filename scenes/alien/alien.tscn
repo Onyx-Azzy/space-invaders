@@ -53,7 +53,7 @@ _data = {
 
 [node name="Alien" type="Area2D" groups=["alien"]]
 collision_layer = 4
-collision_mask = 9
+collision_mask = 27
 script = ExtResource("1_hspfx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
