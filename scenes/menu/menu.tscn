@@ -1,50 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://f4pk17o5bme6"]
+[gd_scene load_steps=10 format=3 uid="uid://f4pk17o5bme6"]
 
 [ext_resource type="Script" uid="uid://dcnxdap7ccm65" path="res://scenes/menu/menu.gd" id="2_t0a87"]
-[ext_resource type="Shader" uid="uid://cxqnwbisq0l7h" path="res://resources/rainbow_gradient.gdshader" id="3_e0arn"]
+[ext_resource type="Shader" uid="uid://c3asl37rs3t1u" path="res://resources/scrolling_background.gdshader" id="3_t0a87"]
 [ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_037ec"]
 [ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="4_juveg"]
+[ext_resource type="Texture2D" uid="uid://bqbmt1tenaxae" path="res://sprites/AlienBKG.png" id="4_t0a87"]
 [ext_resource type="AudioStream" uid="uid://cqlvfalwj8ova" path="res://sfx/rollover6.ogg" id="5_y1o0p"]
 [ext_resource type="AudioStream" uid="uid://r5fhcmrexigi" path="res://sfx/click1.ogg" id="6_r8yej"]
+[ext_resource type="Texture2D" uid="uid://crl4kj1fhm4n0" path="res://sprites/spaceinvaderslogo.png" id="8_t0a87"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1o0p"]
-shader = ExtResource("3_e0arn")
-shader_parameter/strength = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/angle = 45.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_r8yej"]
-shader = ExtResource("3_e0arn")
-shader_parameter/strength = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/angle = 45.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3y2rt"]
-shader = ExtResource("3_e0arn")
-shader_parameter/strength = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/angle = 45.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0a87"]
-shader = ExtResource("3_e0arn")
-shader_parameter/strength = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/angle = 45.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo0fc"]
-shader = ExtResource("3_e0arn")
-shader_parameter/strength = 0.0
-shader_parameter/speed = 0.1
-shader_parameter/angle = 45.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_037ec"]
-shader = ExtResource("3_e0arn")
-shader_parameter/strength = 1.0
-shader_parameter/speed = 0.1
-shader_parameter/angle = 45.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_kaijy"]
-font_size = 170
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k48pe"]
+shader = ExtResource("3_t0a87")
+shader_parameter/scroll_speed = 0.010000000475
+shader_parameter/angle_degrees = 120.0
+shader_parameter/repeat_x = 5.0
+shader_parameter/repeat_y = 5.0
+shader_parameter/tint = Color(1, 0.9254902, 0.15294118, 0.30588236)
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -55,6 +26,41 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_juveg")
 script = ExtResource("2_t0a87")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_k48pe")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_t0a87")
+stretch_mode = 6
+
+[node name="Title" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 277.0
+offset_top = 31.0
+offset_right = -280.5
+offset_bottom = -325.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_t0a87")
+expand_mode = 1
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -74,7 +80,6 @@ grow_vertical = 0
 
 [node name="PlayButton" type="Button" parent="MainMenu"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_y1o0p")
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -84,7 +89,6 @@ script = ExtResource("4_037ec")
 
 [node name="SettingsButton" type="Button" parent="MainMenu"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_r8yej")
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -94,7 +98,6 @@ script = ExtResource("4_037ec")
 
 [node name="CreditsButton" type="Button" parent="MainMenu"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_3y2rt")
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -104,7 +107,6 @@ script = ExtResource("4_037ec")
 
 [node name="QuitButton" type="Button" parent="MainMenu"]
 unique_name_in_owner = true
-material = SubResource("ShaderMaterial_t0a87")
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -119,20 +121,20 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -350.0
-offset_top = 64.0
-offset_right = 350.0
-offset_bottom = 213.0
+offset_left = -457.5
+offset_top = 21.0
+offset_right = 457.5
+offset_bottom = 436.0
 grow_horizontal = 2
 text = "Made by Azzy Steel
+Game #03 of the 20 Games Challenge
 
-Special thanks to the 20GC discord
-community for motivation and support.
-
-Fonts: Kenny High Square, Kenney
 SFX: made using ChipTone, SFB Games
-and found on https://classicgaming.cc/classics/space-invaders/sounds
+Sprites: made using Aseprite, Igara Studio
+Logo:  https://commons.wikimedia.org/wiki/File:Space_invaders_logo.svg
+Fonts: Kenny High Square, Kenney
 
+Shout out to the 20GC community
 
 Thank you for playing!"
 horizontal_alignment = 1
@@ -168,7 +170,6 @@ step = 0.01
 [node name="ShowMenuButton" type="Button" parent="."]
 unique_name_in_owner = true
 visible = false
-material = SubResource("ShaderMaterial_qo0fc")
 custom_minimum_size = Vector2(150, 60)
 layout_mode = 1
 anchors_preset = 7
@@ -184,22 +185,6 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Back"
 script = ExtResource("4_037ec")
-
-[node name="Title" type="Label" parent="."]
-unique_name_in_owner = true
-material = SubResource("ShaderMaterial_037ec")
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -165.5
-offset_right = 165.5
-offset_bottom = 222.0
-grow_horizontal = 2
-text = "Space Invaders"
-label_settings = SubResource("LabelSettings_kaijy")
-horizontal_alignment = 1
-vertical_alignment = 2
 
 [node name="RollOverSFX" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
