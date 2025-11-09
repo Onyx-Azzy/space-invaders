@@ -76,7 +76,7 @@ func _on_body_entered(body: Node2D) -> void:
 func destroy() -> void:
 	GameManager.aliens_destroyed += 1
 	GameManager.aliens_remaining -= 1
-	alien_destroyed.emit(column_group, self)	
+	alien_destroyed.emit(column_group, self)
 	if exposed == true:
 		get_tree().call_group("alien", "check_exposed", column_group)
 	visible = false

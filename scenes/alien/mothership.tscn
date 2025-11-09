@@ -106,3 +106,4 @@ libraries = {
 
 [node name="destroy_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_fkhoi")
+bus = &"Sounds"

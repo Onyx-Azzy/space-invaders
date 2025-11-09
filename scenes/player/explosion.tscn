@@ -25,3 +25,4 @@ script = ExtResource("2_8jvsw")
 
 [node name="ExplosionSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_76tog")
+bus = &"Sounds"

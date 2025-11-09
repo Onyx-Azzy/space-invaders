@@ -105,3 +105,4 @@ libraries = {
 
 [node name="DeathSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_p47bc")
+bus = &"Sounds"

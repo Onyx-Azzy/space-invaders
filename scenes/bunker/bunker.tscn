@@ -231,3 +231,4 @@ sprite_frame = 4
 
 [node name="BunkerHitSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_64wpq")
+bus = &"Sounds"
