@@ -5,9 +5,9 @@
 [ext_resource type="Script" uid="uid://dqj4smln4hefu" path="res://scenes/menu/button.gd" id="4_037ec"]
 [ext_resource type="Theme" uid="uid://c2a57q7dy04ep" path="res://resources/theme.tres" id="4_juveg"]
 [ext_resource type="Texture2D" uid="uid://bqbmt1tenaxae" path="res://sprites/AlienBKG.png" id="4_t0a87"]
+[ext_resource type="Texture2D" uid="uid://dh1fmwn0u8aho" path="res://sprites/SpaceInvadersPixelArtLogo.png" id="5_t0a87"]
 [ext_resource type="AudioStream" uid="uid://cqlvfalwj8ova" path="res://sfx/rollover6.ogg" id="5_y1o0p"]
 [ext_resource type="AudioStream" uid="uid://r5fhcmrexigi" path="res://sfx/click1.ogg" id="6_r8yej"]
-[ext_resource type="Texture2D" uid="uid://crl4kj1fhm4n0" path="res://sprites/spaceinvaderslogo.png" id="8_t0a87"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k48pe"]
 shader = ExtResource("3_t0a87")
@@ -59,7 +59,7 @@ offset_right = -280.5
 offset_bottom = -325.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("8_t0a87")
+texture = ExtResource("5_t0a87")
 expand_mode = 1
 
 [node name="MainMenu" type="VBoxContainer" parent="."]
@@ -122,7 +122,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -457.5
-offset_top = 21.0
+offset_top = 37.0
 offset_right = 457.5
 offset_bottom = 436.0
 grow_horizontal = 2
@@ -131,7 +131,6 @@ Game #03 of the 20 Games Challenge
 
 SFX: made using ChipTone, SFB Games
 Sprites: made using Aseprite, Igara Studio
-Logo:  https://commons.wikimedia.org/wiki/File:Space_invaders_logo.svg
 Fonts: Kenny High Square, Kenney
 
 Shout out to the 20GC community

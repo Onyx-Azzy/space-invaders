@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crl4kj1fhm4n0"
-path="res://.godot/imported/spaceinvaderslogo.png-08a89c19eb02d5d797113bfc73b1e30c.ctex"
+uid="uid://dh1fmwn0u8aho"
+path="res://.godot/imported/SpaceInvadersPixelArtLogo.png-0c3246543ee3ea80162a4ef4eed30882.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/spaceinvaderslogo.png"
-dest_files=["res://.godot/imported/spaceinvaderslogo.png-08a89c19eb02d5d797113bfc73b1e30c.ctex"]
+source_file="res://sprites/SpaceInvadersPixelArtLogo.png"
+dest_files=["res://.godot/imported/SpaceInvadersPixelArtLogo.png-0c3246543ee3ea80162a4ef4eed30882.ctex"]
 
 [params]
 
