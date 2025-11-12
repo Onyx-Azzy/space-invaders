@@ -17,6 +17,7 @@ func _ready() -> void:
 	mothership_destroyed.connect(get_parent().increase_score)
 	hit_flash_player.animation_finished.connect(func(_anim_name: StringName): explosion_fx(); queue_free())
 	$VisibleOnScreenNotifier2D.screen_exited.connect(_on_screen_exited)
+	area_entered.connect(_on_area_entered)
 	
 
 
@@ -26,11 +27,19 @@ func _process(delta: float) -> void:
 		
 	# move the ship across the screen
 	position.x += SPEED * direction * delta
+	
+	
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("bullet"):
+		moving = false
+		get_parent().screen_shake(0.2)
+		hit_flash_player.play("hit_flash")
+		await get_tree().create_timer(0.3, true, false, true).timeout
+		destroy()
 
 
 func destroy() -> void:
 	$destroy_sfx.play()
-	moving = false
 
 	# increase score
 	mothership_destroyed.emit(50 * GameManager.level)

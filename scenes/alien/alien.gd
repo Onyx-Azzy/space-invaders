@@ -64,8 +64,9 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		get_parent().screen_shake(0.1)
 		hit_flash_player.play("hit_flash")
-		await get_parent().hit_stop(0.3)
+		await get_tree().create_timer(0.1, true, false, true).timeout
 		destroy()
+
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
